@@ -6,11 +6,23 @@ Over time I may add additional packages and remove other packages I don't need t
 
 ## Additional packages installed
 
-- coolercontrol (codifryed/CoolerControl copr)
+- coolercontrol
 - liquidctl
 - netbird
 - netbird-ui
 - podman-compose
+- konsole (replaces ptyxis)
+- neovim
+- zsh
+- util-linux (for `chsh`)
+- htop
+- vlc
+
+## Packages Removed
+
+- krunner-bazaar
+- bazaar
+- ptyxis
 
 ## KDE Discover note
 
@@ -42,6 +54,6 @@ To go back to the official vanilla bazzite-nvidia-open image:
 
 `sudo bootc switch ghcr.io/ublue-os/bazzite-nvidia-open:stable`
 
-Then reboot after the command finishes. You may also be able to use `bazzite-rollback-helper` or `brh` to switch back although I haven't tested that myself.
+Then reboot after the command finishes. You can also use `bazzite-rollback-helper` or `brh` to switch back.
 
 Credit to the team at Universal Blue for making Bazzite.

@@ -26,20 +26,30 @@ fi
 
 ### Remove unwanted packages
 
-# remove bazaar
-dnf5 remove -y krunner-bazaar bazaar
+dnf5 remove -y krunner-bazaar \
+  bazaar \
+  ptyxis
 
 ### Install packages
 
 # install discover, exclude packages that cause issues
-dnf5 install -y plasma-discover plasma-discover-flatpak plasma-discover-notifier plasma-discover-kns \
+dnf5 install -y plasma-discover \
+  plasma-discover-flatpak \
+  plasma-discover-notifier \
+  plasma-discover-kns \
   --exclude=plasma-discover-offline-updates,plasma-discover-packagekit,plasma-discover-rpm-ostree,packagekit
 
 # install other packages
-dnf5 install -y podman-compose
+dnf5 install -y podman-compose \
+  zsh \
+  util-linux \
+  vlc \
+  konsole \
+  neovim \
+  htop
 
 # using rpm-ostree over dnf here as dnf had issues properly installing
-# netbird and coolercontrol.
+# these packages.
 rpm-ostree install -y netbird netbird-ui coolercontrol liquidctl
 
 ### Enable services
