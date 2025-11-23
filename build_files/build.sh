@@ -20,8 +20,11 @@ gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
 repo_gpgcheck=1
 EOF
 
-# this causes build issues, leave commented for now
-# dnf5 config-manager addrepo --from-repofile=/etc/yum.repos.d/netbird.repo
+# add coolercontrol copr
+wget https://copr.fedorainfracloud.org/coprs/codifryed/CoolerControl/repo/fedora-$(rpm -E %fedora)/codifryed-CoolerControl-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_codifryed-CoolerControl.repo
+
+# install dnf plugins
+dnf5 install -y dnf-plugins-core
 
 # enable required copr repos
 dnf copr enable codifryed/CoolerControl
