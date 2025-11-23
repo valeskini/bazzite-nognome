@@ -2,14 +2,9 @@
 
 set -ouex pipefail
 
-### Install packages
+### Enable/Add repos
 
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
-
-# add netbird repo
+# Add Netbird repo
 tee /etc/yum.repos.d/netbird.repo <<EOF
 [netbird]
 name=netbird
@@ -20,17 +15,21 @@ gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
 repo_gpgcheck=1
 EOF
 
-# add coolercontrol copr
-# wget https://copr.fedorainfracloud.org/coprs/codifryed/CoolerControl/repo/fedora-$(rpm -E %fedora)/codifryed-CoolerControl-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_codifryed-CoolerControl.repo
+# Enable Terra repository
+terra_repo="/etc/yum.repos.d/terra.repo"
+if (! grep -q "enabled=0" "$terra_repo"); then
+  echo "Terra repository already enabled."
+else
+  echo "Enabling Terra Repository."
+  sudo sed -i 's@enabled=0@enabled=1@g' "$repo_path"
+fi
 
-# install dnf plugins
-# dnf5 install -y dnf-plugins-core
-
-# enable required copr repos
-# dnf copr enable codifryed/CoolerControl
+### Remove unwanted packages
 
 # remove bazaar
 dnf5 remove -y krunner-bazaar bazaar
+
+### Install packages
 
 # install discover, exclude packages that cause issues
 dnf5 install -y plasma-discover plasma-discover-flatpak plasma-discover-notifier plasma-discover-kns \
@@ -39,10 +38,11 @@ dnf5 install -y plasma-discover plasma-discover-flatpak plasma-discover-notifier
 # install other packages
 dnf5 install -y podman-compose
 
-# rpm-ostree install netbird to avoid post-install.sh error when using dnf
-# must also install coolercontrol this way to get daemon to work or else
-# systemd service wont work.
-rpm-ostree install netbird netbird-ui coolercontrol liquidctl
+# using rpm-ostree over dnf here as dnf had issues properly installing
+# netbird and coolercontrol.
+rpm-ostree install -y netbird netbird-ui coolercontrol liquidctl
+
+### Enable services
 
 # enable podman socket
 systemctl enable podman.socket
