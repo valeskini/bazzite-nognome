@@ -9,8 +9,28 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# this installs a package from fedora repos
-dnf5 install -y tmux 
+# add netbird repo and enable in dnf
+tee /etc/yum.repos.d/netbird.repo <<EOF
+[netbird]
+name=netbird
+baseurl=https://pkgs.netbird.io/yum/
+enabled=1
+gpgcheck=0
+gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
+repo_gpgcheck=1
+EOF
+
+dnf5 config-manager addrepo --from-repofile=/etc/yum.repos.d/netbird.repo
+
+# remove bazaar
+dnf5 remove krunner-bazaar bazaar
+
+# install discover, exclude packages that cause issues
+dnf5 install -y plasma-discover plasma-discover-flatpak plasma-discover-notifier plasma-discover-kns \
+  --exclude=plasma-discover-offline-updates,plasma-discover-packagekit,plasma-discover-rpm-ostree,packagekit
+
+# install other packages
+dnf5 install -y coolercontrol liquidctl netbird netbird-ui podman-compose
 
 # Use a COPR Example:
 #
@@ -19,6 +39,8 @@ dnf5 install -y tmux
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
 
-#### Example for enabling a System Unit File
-
+# enable podman socket
 systemctl enable podman.socket
+
+# enable netbird system service
+systemctl enable netbird
