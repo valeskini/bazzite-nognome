@@ -37,7 +37,10 @@ dnf5 install -y plasma-discover plasma-discover-flatpak plasma-discover-notifier
   --exclude=plasma-discover-offline-updates,plasma-discover-packagekit,plasma-discover-rpm-ostree,packagekit
 
 # install other packages
-dnf5 install -y coolercontrol liquidctl netbird netbird-ui podman-compose
+dnf5 install -y coolercontrol liquidctl podman-compose
+
+# rpm-ostree install netbird to avoid post-install.sh error when using dnf
+rpm-ostree install netbird netbird-ui
 
 # disable copr repos to avoid being included in final image
 dnf5 copr disable codifryed/CoolerControl
