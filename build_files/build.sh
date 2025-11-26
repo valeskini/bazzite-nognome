@@ -50,7 +50,8 @@ dnf5 install -y podman-compose \
   vlc-plugins-all \
   konsole \
   neovim \
-  htop
+  htop \
+  pipewire-config-raop
 
 # using rpm-ostree over dnf here as dnf had issues properly installing
 # these packages.
