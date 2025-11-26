@@ -50,7 +50,10 @@ dnf5 install -y podman-compose \
   vlc-plugins-all \
   konsole \
   neovim \
-  htop \
+  htop
+
+# install from bazzite-multilib copr
+dnf5 -y install --repo="copr:copr.fedorainfracloud.org:bazzite-org:bazzite-multilib" \
   pipewire-config-raop
 
 # using rpm-ostree over dnf here as dnf had issues properly installing
