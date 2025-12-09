@@ -1,30 +1,22 @@
-# bazzite-custom
+# bazzite-nvidia-nognome
 
-This is a customized version of bazzite-nvidia-open which adds back KDE Discover, removes bazaar and additional packages I need. __This image will only work with NVIDIA GPUs.__
+This is a customized version of bazzite-nvidia which adds back KDE Discover, removes bazaar gnome-disks and ptyxis. __This image will only work with NVIDIA GPUs (old driver).__
 
 If you do rebase to this image, please remember to __disable automatic updates in system settings__ as you should be doing updates through `ujust update`. I've experienced issues with Discover when it tried automatically updating flatpaks.
 
-Over time I may add additional packages and remove other packages I don't need to make Bazzite more suited to my needs. I will list all changes in this readme as I work on this image.
-
-## Additional packages installed
-
-- coolercontrol
-- liquidctl
-- netbird
-- netbird-ui
-- podman-compose
-- konsole (replaces ptyxis)
-- neovim
-- zsh
-- util-linux (for `chsh`)
-- htop
-- vlc (and required plugins)
-
 ## Packages Removed
-
 - krunner-bazaar
 - bazaar
 - ptyxis
+- gnome-disk-utility
+
+## Packages Added
+- kde-partitionmanager
+- konsole
+- plasma-discover
+- plasma-discover-flatpak
+- plasma-discover-notifier
+- plasma-discover-kns
 
 ## KDE Discover note
 
