@@ -8,10 +8,8 @@ If you do rebase to this image, please remember to __disable automatic updates i
 - krunner-bazaar
 - bazaar
 - ptyxis
-- gnome-disk-utility
 
 ## Packages Added
-- kde-partitionmanager
 - konsole
 - plasma-discover
 - plasma-discover-flatpak
