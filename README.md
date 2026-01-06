@@ -1,6 +1,6 @@
-# bazzite-nvidia-nognome
+# bazzite-nognome
 
-This is a customized version of bazzite-nvidia which adds back KDE Discover, removes bazaar gnome-disks and ptyxis. __This image will only work with NVIDIA GPUs (old driver).__
+This is a customized version of bazzite which adds back KDE Discover, removes bazaar gnome-disks and ptyxis.
 
 If you do rebase to this image, please remember to __disable automatic updates in system settings__ as you should be doing updates through `ujust update`. I've experienced issues with Discover when it tried automatically updating flatpaks.
 
@@ -38,13 +38,13 @@ If those packages are not excluded Discover will not work properly.
 
 In the terminal:
 
-`sudo bootc switch ghcr.io/valeskini/bazzite-nvidia-nognome:latest`
+`sudo bootc switch ghcr.io/valeskini/bazzite-nognome:latest`
 
 This will queue the image for the next reboot, and you should reboot right away after the command finishes.
 
-To go back to the official vanilla bazzite-nvidia image:
+To go back to the official vanilla bazzite image:
 
-`sudo bootc switch ghcr.io/ublue-os/bazzite-nvidia:stable`
+`sudo bootc switch ghcr.io/ublue-os/bazzite:stable`
 
 Then reboot after the command finishes. You can also use `bazzite-rollback-helper` or `brh` to switch back.
 
