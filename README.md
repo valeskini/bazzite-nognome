@@ -36,16 +36,17 @@ If those packages are not excluded Discover will not work properly.
 
 ## How to use this image
 
-In the terminal:
+Currently the github runner isnt working correctly (its running out of disk space), feel free to make a pr to fix it...
 
-`sudo bootc switch ghcr.io/valeskini/bazzite-nognome:latest`
+~~In the terminal:~~
 
-This will queue the image for the next reboot, and you should reboot right away after the command finishes.
+~~`sudo bootc switch ghcr.io/valeskini/bazzite-nognome:latest`~~
 
-To go back to the official vanilla bazzite image:
+~~This will queue the image for the next reboot, and you should reboot right away after the command finishes.~~
 
-`sudo bootc switch ghcr.io/ublue-os/bazzite:stable`
 
-Then reboot after the command finishes. You can also use `bazzite-rollback-helper` or `brh` to switch back.
+~~`sudo bootc switch ghcr.io/ublue-os/bazzite:stable`~~
+
+~~Then reboot after the command finishes. You can also use `bazzite-rollback-helper` or `brh` to switch back.~~
 
 Credit to the team at Universal Blue for making Bazzite.
