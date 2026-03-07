@@ -36,16 +36,13 @@ If those packages are not excluded Discover will not work properly.
 
 ## How to use this image
 
-In the terminal:
+Currently the github runner isnt working correctly (its running out of disk space), feel free to make a pr to fix it...
 
-`sudo bootc switch ghcr.io/valeskini/bazzite-nvidia-nognome:latest`
-
-This will queue the image for the next reboot, and you should reboot right away after the command finishes.
-
-To go back to the official vanilla bazzite-nvidia image:
-
-`sudo bootc switch ghcr.io/ublue-os/bazzite-nvidia:stable`
-
-Then reboot after the command finishes. You can also use `bazzite-rollback-helper` or `brh` to switch back.
+~~In the terminal:~~
+~~`sudo bootc switch ghcr.io/valeskini/bazzite-nvidia-nognome:latest`~~
+~~This will queue the image for the next reboot, and you should reboot right away after the command finishes.~~
+~~To go back to the official vanilla bazzite-nvidia image:~~
+~~`sudo bootc switch ghcr.io/ublue-os/bazzite-nvidia:stable`~~
+~~Then reboot after the command finishes. You can also use `bazzite-rollback-helper` or `brh` to switch back.~~
 
 Credit to the team at Universal Blue for making Bazzite.
